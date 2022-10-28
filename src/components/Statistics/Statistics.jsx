@@ -6,6 +6,7 @@ import {
   Label,
   Percentage,
 } from './Statistics.styled';
+import PropTypes from 'prop-types';
 
 const Statistics = ({ title, stats }) => {
   return (
@@ -13,13 +14,10 @@ const Statistics = ({ title, stats }) => {
       {title && <Title className="title">{title}</Title>}
 
       <StatList>
-        {stats.map(el => (
-          <StatItem
-            key={el.id}
-            style={{ backgroundColor: getRandomHexColor() }}
-          >
-            <Label>{el.label}</Label>
-            <Percentage>{el.percentage}</Percentage>
+        {stats.map(({ id, label, percentage }) => (
+          <StatItem key={id} style={{ backgroundColor: getRandomHexColor() }}>
+            <Label>{label}</Label>
+            <Percentage>{percentage}</Percentage>
           </StatItem>
         ))}
       </StatList>
@@ -30,5 +28,15 @@ const Statistics = ({ title, stats }) => {
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 }
+
+Statistics.propTypes = {
+  stats: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+      percentage: PropTypes.number.isRequired,
+    })
+  ),
+};
 
 export default Statistics;

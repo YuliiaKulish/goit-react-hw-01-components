@@ -1,4 +1,4 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { Td, Tr } from './TransactionHistoryItem.styled';
 
 const TransactionHistoryItem = ({ type, amount, currency }) => {
@@ -11,9 +11,10 @@ const TransactionHistoryItem = ({ type, amount, currency }) => {
   );
 };
 
-// FriendListItem.propTypes = {
-//   avatar: PropTypes.string.isRequired,
-//   name: PropTypes.string.isRequired,
-// };
+TransactionHistoryItem.propTypes = {
+  type: PropTypes.string.isRequired,
+  amount: PropTypes.string.isRequired,
+  currency: PropTypes.string.isRequired,
+};
 
 export default TransactionHistoryItem;
