@@ -1,4 +1,4 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import {
   Item,
   IsOnline,
@@ -7,9 +7,7 @@ import {
   Name,
 } from './FriendListItem.styled';
 
-const FriendListItem = props => {
-  const { avatar, name, isOnline } = props;
-
+const FriendListItem = ({ avatar, name, isOnline }) => {
   return (
     <Item>
       {isOnline ? <IsOnline></IsOnline> : <IsOffline></IsOffline>}
@@ -19,9 +17,10 @@ const FriendListItem = props => {
   );
 };
 
-// FriendListItem.propTypes = {
-//   avatar: PropTypes.string.isRequired,
-//   name: PropTypes.string.isRequired,
-// };
+FriendListItem.propTypes = {
+  avatar: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  isOnline: PropTypes.bool.isRequired,
+};
 
 export default FriendListItem;
